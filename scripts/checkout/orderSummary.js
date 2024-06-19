@@ -3,6 +3,7 @@ import { products } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import { deliveryOptions } from "../../data/deliveryOptions.js"; 
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 const today = dayjs();
 const deliveryDate = today.add(7, "days");
@@ -140,6 +141,7 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
         // const deliveryOptionId = element.dataset.deliveryOptionId
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
     });
 });
 };
