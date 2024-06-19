@@ -79,6 +79,7 @@ cart.forEach((cartItem) => {
         </div>
     </div>
     `
+    
 });
 
 function deliveryOptionsHTML(matchingProduct, cartItem){
@@ -130,6 +131,7 @@ document.querySelectorAll('.js-delete-link')
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.remove();
+        renderPaymentSummary();
     });
 });
 
