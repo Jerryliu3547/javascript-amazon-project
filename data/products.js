@@ -26,6 +26,7 @@ class Product {
     this.type = productDetails.type;
 
   }
+  
   extraInfoHTML() {
     return '';
   }
