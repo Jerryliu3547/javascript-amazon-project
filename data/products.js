@@ -15,6 +15,7 @@ class Product {
   name;
   rating;
   priceCents;
+  type;
 
   constructor (productDetails) {
     this.id = productDetails.id;
@@ -22,7 +23,11 @@ class Product {
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.type = productDetails.type;
 
+  }
+  extraInfoHTML() {
+    return '';
   }
 }
 
@@ -43,6 +48,22 @@ const product1 = new Product({
 });
 console.log(product1);
 
+class Clothing extends Product{
+  sizeChartLink;
+  constructor(productDetails){
+    // super calls for parent class's constructor
+    super(productDetails);
+    this.sizeChartLink= productDetails.sizeChartLink;
+  }
+  // super.extraInfoHTML()
+  extraInfoHTML(){
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">
+        Size Chart
+      </a>
+    `;
+  }
+};
 
 export const products = [
   {
@@ -704,7 +725,10 @@ export const products = [
     ]
   }
 ].map((productDetails)=> {
+  if(productDetails.type === "clothing"){
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
 
-console.log(products);
+
