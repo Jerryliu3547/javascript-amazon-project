@@ -71,6 +71,25 @@ class Clothing extends Product{
 // console.log(date);
 // console.log(date.toLocaleTimeString());
 
+
+
+// export function loadProducts(fun){
+//   const xhr = new XMLHttpRequest();
+//   xhr.addEventListener('load', ()=>{
+//     products = JSON.parse(xhr.response).map((productDetails)=> {
+//       if(productDetails.type === "clothing"){
+//         return new Clothing(productDetails);
+//       }
+//       return new Product(productDetails);
+//     });
+//     console.log('loaded')
+//     fun();
+//   })
+//   xhr.open('GET', 'https://supersimplebackend.dev/products');
+//   xhr.send();
+// };
+
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -736,5 +755,8 @@ export const products = [
   }
   return new Product(productDetails);
 });
+
+
+
 
 
