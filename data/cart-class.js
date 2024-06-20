@@ -1,20 +1,22 @@
 class Cart {
     // same thing as belong
     cartItems;
-    localStorageKey = undefined;
+    // this is private property which can only access inside the class
+    #localStorageKey = undefined;
 
     // about constructor
     // constructor set up all parameter
     // has to be named "constructor"
     // should not return anything
     constructor (localStorageKey) {
-        this.localStorageKey = localStorageKey
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey
+        this.#loadFromStorage();
     
     }
 
-    loadFromStorage() {
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+    // private method
+    #loadFromStorage() {
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
     
         if (!this.cartItems){
             this.cartItems = [{
@@ -30,7 +32,7 @@ class Cart {
     }
 
     savetoStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
 
     addtoCart(productId) {
